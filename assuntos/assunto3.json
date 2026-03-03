@@ -1,0 +1,25 @@
+{
+  "nome": "Viabilidade",
+  "slides": [
+    {
+      "titulo": "Slide 1 - O que é Viabilidade?",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Viabilidade analisa se um projeto pode ser executado."
+    },
+    {
+      "titulo": "Slide 2 - Viabilidade Técnica",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Avalia se existe capacidade técnica para executar o projeto."
+    },
+    {
+      "titulo": "Slide 3 - Viabilidade Financeira",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Analisa custos, investimentos e retorno."
+    },
+    {
+      "titulo": "Slide 4 - Viabilidade Legal",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Verifica se o projeto atende às normas e leis."
+    }
+  ]
+}
