@@ -1,33 +1,49 @@
-// Aqui vamos guardar todos os temas
 let temas = [];
-
-// Função que os arquivos de assunto vão usar
-function registrarTema(nome, slides) {
-    temas.push({
-        nome: nome,
-        slides: slides
-    });
-}
-
-// Variáveis de controle
 let temaAtual = null;
 let slideAtual = 0;
 
-// Elementos da tela
 const titulo = document.getElementById("titulo");
 const imagem = document.getElementById("imagem");
 const descricao = document.getElementById("descricao");
 const btnProximo = document.getElementById("btnProximo");
+const btnAnterior = document.getElementById("btnAnterior");
 const sidebar = document.getElementById("sidebar");
 
-// Criar botões da lateral
+// 🔎 Buscar automaticamente todos os JSON
+async function carregarTemas() {
+    let contador = 1;
+    let continuar = true;
+
+    while (continuar) {
+        try {
+            const resposta = await fetch(`assuntos/assunto${contador}.json`);
+
+            if (!resposta.ok) {
+                continuar = false;
+                break;
+            }
+
+            const dados = await resposta.json();
+            temas.push(dados);
+
+            contador++;
+
+        } catch (erro) {
+            continuar = false;
+        }
+    }
+
+    criarMenu();
+}
+
+// Criar botões na lateral
 function criarMenu() {
     temas.forEach((tema, index) => {
 
         const botao = document.createElement("button");
         botao.textContent = tema.nome;
 
-        botao.onclick = function() {
+        botao.onclick = function () {
             temaAtual = index;
             slideAtual = 0;
             mostrarSlide();
@@ -37,9 +53,8 @@ function criarMenu() {
     });
 }
 
-// Mostrar slide
+// Mostrar slide atual
 function mostrarSlide() {
-
     const slide = temas[temaAtual].slides[slideAtual];
 
     titulo.textContent = slide.titulo;
@@ -47,8 +62,9 @@ function mostrarSlide() {
     descricao.textContent = slide.descricao;
 }
 
-// Botão próximo
-btnProximo.onclick = function() {
+// Próximo
+btnProximo.onclick = function () {
+    if (temaAtual === null) return;
 
     slideAtual++;
 
@@ -59,7 +75,19 @@ btnProximo.onclick = function() {
     mostrarSlide();
 };
 
-// Esperar carregar tudo
-window.onload = function() {
-    criarMenu();
+// Anterior
+btnAnterior.onclick = function () {
+    if (temaAtual === null) return;
+
+    slideAtual--;
+
+    if (slideAtual < 0) {
+        slideAtual = temas[temaAtual].slides.length - 1;
+    }
+
+    mostrarSlide();
+};
+
+window.onload = function () {
+    carregarTemas();
 };
