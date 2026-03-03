@@ -1,0 +1,20 @@
+{
+  "nome": "Topografia",
+  "slides": [
+    {
+      "titulo": "Slide 1 - O que é Topografia?",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Topografia é o estudo detalhado da superfície do terreno."
+    },
+    {
+      "titulo": "Slide 2 - Levantamento Planimétrico",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Mede posições horizontais no terreno."
+    },
+    {
+      "titulo": "Slide 3 - Curvas de Nível",
+      "imagem": "https://via.placeholder.com/400",
+      "descricao": "Representam altitudes no mapa."
+    }
+  ]
+}
